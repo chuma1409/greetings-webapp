@@ -1,0 +1,46 @@
+
+
+<div class="container">
+    <h1>Greetings</h1>
+    <form action="/greetings" method="POST">
+    <div>
+          <span type="chumaNumber" ></span>
+        <h2>{{greetNameCounter}}</h2>
+    </div> 
+    Name
+    <input type="text" name="userName" id="inputElement" class="textArea" placeholder="enter your name here"
+            value={{greetings.userName}}>
+    
+
+
+<div class="languages">
+    <input type="radio" name="language"  value="English">
+    <span class="label-body" >English</span>
+    <input type="radio" name="language"  value="Afrikaans">
+    <span class="label-body" >Afrikaans</span>
+    <input type="radio" name="language" value="isiXhosa">
+    <span class="label-body" >isiXhosa</span>
+</div>
+
+<div class="GreetBtn">
+
+    <input type="submit" value="Greet Me" class="nameBtn">
+  
+    <input type="submit" value="reset" class="resetBtn">
+    </form>
+
+
+        <h2>{{languages}}</h2>
+         <div class="errMsg">{{messages.errMsg}}</div>
+    <div>
+      <a href="/greeted">Greeted names</span></a>
+</div>
+    <div class="message"></div>
+  
+</div>
+  
+
+</div>
+
+
+

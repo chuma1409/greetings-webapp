@@ -1,0 +1,61 @@
+
+body {
+	font-family: arial;
+	color:black;
+	background-color: bisque;
+  }
+
+.container {
+	margin: auto;
+	width: 80%;
+}
+  
+  input[type="text"] {
+	width: 15em;
+	padding: 0.5em;
+	margin-bottom: 2em;
+	margin-top: 2em;
+
+  }
+  
+  input[type="button"] {
+	margin: 0.5em;
+	width: 8em;
+	padding: 0.5em;
+	background-color: burlywood;
+	
+  }
+  
+  .msg {
+	margin-bottom: 2em;
+	
+  }
+  
+  .message {
+	padding: 2em;
+	
+	height: 2em;
+	width: 40em;
+	
+	color: black;
+	margin-bottom: 1em;
+  }
+  .languages {
+	width: 30em;
+	padding: 0.5em;
+	margin-bottom: 1em;
+	
+  }
+  .chumaNumber {
+	  font-style: italic;
+	  font-size: large;
+	  font-stretch: expanded;
+	  
+
+	}
+	.errMsg {
+		width: 30em;
+	padding: 0.5em;
+	margin-bottom: 1em;
+	color: red;
+	}
