@@ -6,13 +6,13 @@
     <div>
           <span type="chumaNumber" ></span>
         <h2>{{greetNameCounter}}</h2>
+       
     </div> 
     Name
     <input type="text" name="userName" id="inputElement" class="textArea" placeholder="enter your name here"
             value={{greetings.userName}}>
-    
-
-
+   
+ <div class="errMsg">{{messages.errMsg}}</div>
 <div class="languages">
     <input type="radio" name="language"  value="English">
     <span class="label-body" >English</span>
@@ -29,9 +29,9 @@
     <input type="submit" value="reset" class="resetBtn">
     </form>
 
-
+  
         <h2>{{languages}}</h2>
-         <div class="errMsg">{{messages.errMsg}}</div>
+        
     <div>
       <a href="/greeted">Greeted names</span></a>
 </div>
