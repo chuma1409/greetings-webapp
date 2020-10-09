@@ -2,12 +2,14 @@
 body {
 	font-family: arial;
 	color:black;
-	background-color: bisque;
+	background-color: burlywood;
   }
 
 .container {
 	margin: auto;
 	width: 80%;
+	background-color: bisque;
+	text-align-last: center;
 }
   
   input[type="text"] {
@@ -44,6 +46,7 @@ body {
 	width: 30em;
 	padding: 0.5em;
 	margin-bottom: 1em;
+	text-align-last: right;
 	
   }
   .chumaNumber {
