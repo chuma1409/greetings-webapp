@@ -85,7 +85,12 @@ console.log(namesG.rows)
 			return newName;
 		}
 		return "";
-	}
+	 }
+	async function resetB(){
+		 var res = await pool.query(`delete from greet`)
+		 return res
+	 }
+	
 	return {
 		setGreetNames,
 		languages,
@@ -93,6 +98,7 @@ console.log(namesG.rows)
 		getGreetNames,
 		errorHandler,
 		regFunction,
-		UserMsg
+		UserMsg,
+		resetB
 	}
 }

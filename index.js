@@ -55,6 +55,11 @@ app.get('/', function (req, res) {
      
     res.render('greeted', {name: greetedNames});
  });
+ app.get('/reset', async function(req, res){
+   await greetings.resetB();
+
+   res.render('index')
+ })
  app.get('/', function (req, res) {
   req.flash('info', 'Welcome');
   res.render('index', {
