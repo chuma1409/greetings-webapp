@@ -43,12 +43,15 @@ body {
 	margin-bottom: 1em;
   }
   .languages {
-	width: 30em;
-	padding: 0.5em;
+	width: 35em;
+	padding: 0.2em;
+	/* width: 80%; */
 	margin-bottom: 1em;
+	/* margin: auto; */
 	text-align-last: right;
 	
   }
+  
   .chumaNumber {
 	  font-style: italic;
 	  font-size: large;
@@ -56,9 +59,9 @@ body {
 	  
 
 	}
-	.errMsg {
-		width: 30em;
-	padding: 0.5em;
-	margin-bottom: 1em;
+	
+.errMsg{
 	color: red;
-	}
+}
+	
+	

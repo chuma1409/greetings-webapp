@@ -14,14 +14,19 @@ module.exports = function Greetings(pool) {
 // 		}
 // 	}
 async function setGreetNames(name){
+	var regNames = /^[a-zA-Z]+$/;
+		newRegex = new  RegExp(regNames);
+		regexTest = newRegex.test(name);
+	var newName = name.charAt(0).toUpperCase() + name.slice(1).toLowerCase()
+	
 	const Dname = await pool.query(`SELECT name FROM greet  
-		WHERE name = $1`,[name]);
+		WHERE name = $1`,[newName]);
 		if ( Dname.rowCount === 0){
-			const insertName = await pool.query(`INSERT INTO greet(name, counter) VALUES ($1, 1)`,[name]);
+			const insertName = await pool.query(`INSERT INTO greet(name, counter) VALUES ($1, 1)`,[newName]);
 		}else {
 	 const counter = await pool.query(`UPDATE greet 
 		SET counter= counter+1
-		WHERE name =$1`,[name]);
+		WHERE name =$1`,[newName]);
 			}
 		
 			

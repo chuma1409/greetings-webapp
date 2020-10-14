@@ -74,10 +74,8 @@ app.get('/addFlash', function (req, res) {
   
     const name =  req.body.userName
     const language =  req.body.language
-   greetings.setGreetNames(name);
-
-    var languages = await greetings.languages(language, name)
-    var greetNameCounter = await greetings.greetNameCounter();
+    
+   
     // req.flash('info', 'Flash Message Added');
 if(!name && !language){
 req.flash('errMsg','please enter your name and select a language')
@@ -87,6 +85,11 @@ else if(!language){
 }
 else if(!name){
   req.flash('errMsg','please enter your name')
+}
+else {
+  await greetings.setGreetNames(name);
+  var languages = await greetings.languages(language, name)
+  var greetNameCounter = await greetings.greetNameCounter();
 }
     res.render('index', {
         languages: languages,
@@ -116,7 +119,7 @@ console.log(element)
 
 
 
-const PORT = process.env.PORT || 3014;
+const PORT = process.env.PORT || 3015;
 
 
 app.listen(PORT, function(){
