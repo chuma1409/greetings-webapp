@@ -1,8 +1,11 @@
 
 <h1>Greetings</h1>
-<table>
+  
+   <ul>
 {{#each name}}
- <tr><td> <a href="/counter/{{this.name}}">{{this.name}} </a></td></tr>
+  <div class="greetedMsg"><li><a href="/counter/{{this.name}}">{{this.name}} </a></li></div>
  {{/each}}
- </table>
+ </ul>
+  
     <a href="/"><button type="button" class="backBtn">Back</button></a>
+  
