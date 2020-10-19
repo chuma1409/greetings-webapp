@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const flash = require('express-flash');
 const session = require('express-session');
 const Greetings = require("./greetings");
+const route = require("./routes")
 const pg = require("pg");
 const Pool = pg.Pool;
 const connectionString = process.env.DATABASE_URL || 'postgresql://chuma:pg123@localhost:5432/greetings-webapp';
@@ -12,6 +13,7 @@ const pool = new Pool({
 	connectionString
 });
 const greetings = Greetings(pool)
+const routes = route(greetings)
 
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
@@ -41,81 +43,16 @@ app.get('/counter', function(){
 })
 
 
-app.get('/', function (req, res) {
-
-    res.render('index');
-  
-  });
+app.get('/',routes.counter)
 
 
+  app.get('/greeted',routes.greeted)
+ app.get('/reset',routes.reset)
+ app.get('/',routes.home)
+app.get('/addFlash',routes.flash)
+  app.post('/greetings',routes.greeting)
 
-  app.get('/greeted',async function(req,res){
-    var greetedNames = await greetings.getGreetNames();
- 
-     
-    res.render('greeted', {name: greetedNames});
- });
- app.get('/reset', async function(req, res){
-   await greetings.resetB();
-
-   res.render('index')
- })
- app.get('/', function (req, res) {
-  req.flash('info', 'Welcome');
-  res.render('index', {
-    title: 'Home'
-  })
-});
-app.get('/addFlash', function (req, res) {
-  req.flash('info', 'Flash Message Added');
-  res.redirect('/');
-});
-  app.post('/greetings', async function (req, res) {
-  
-    const name =  req.body.userName
-    const language =  req.body.language
-    
-   
-    // req.flash('info', 'Flash Message Added');
-if(!name && !language){
-req.flash('errMsg','please enter your name and select a language')
-}
-else if(!language){
-  req.flash('errMsg','please select a language')
-}
-else if(!name){
-  req.flash('errMsg','please enter your name')
-}
-else {
-  await greetings.setGreetNames(name);
-  var languages = await greetings.languages(language, name)
-  var greetNameCounter = await greetings.greetNameCounter();
-}
-    res.render('index', {
-        languages: languages,
-        greetNameCounter: greetNameCounter
-  
-    });
-  
-  });
-
-  app.get('/counter/:username', async function(req, res){
-     let username = req.params.username;
-     var greetedNames =await greetings.getGreetNames();
-     var counts = await greetings.UserMsg(username);
-for (const key in counts) {
-
-    var element = counts[key];
-    
-  
-}
-console.log(element)
-    var msg = "Hi, " + username + " you been greeted " + element + " times" + "!"
-
-    res.render('counter', {
-      message : msg
-    })
-  })
+  app.get('/counter/:username',routes.personCounter)
 
 
 
