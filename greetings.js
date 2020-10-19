@@ -4,15 +4,6 @@ module.exports = function Greetings(pool) {
 
 	const namesGreeted = {};
 
-
-//  function setGreetNames(name) {
-// 		if (name) {
-// 			if (namesGreeted[name] === undefined) {
-// 				namesGreeted[name] = 0;
-// 			}
-// 			namesGreeted[name]++
-// 		}
-// 	}
 async function setGreetNames(name){
 	var regNames = /^[a-zA-Z]+$/;
 		newRegex = new  RegExp(regNames);
@@ -27,9 +18,7 @@ async function setGreetNames(name){
 	 const counter = await pool.query(`UPDATE greet 
 		SET counter= counter+1
 		WHERE name =$1`,[newName]);
-			}
-		
-			
+			}	
 		}		
 		
 
@@ -44,10 +33,14 @@ async function setGreetNames(name){
 		if (lang === "isiXhosa") {
 			return "Molo, " + name + "!";
 		}
+		
 	}
 
 
 	 function errorHandler(lang, name){
+		 if(name !== '' & isNaN(name)){
+			 return "name should not be a number"
+		 }
 		if(!lang && !name){
 			
 			return "please enter your name and select a language";

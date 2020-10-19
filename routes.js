@@ -30,7 +30,7 @@ const counter =  function (req, res) {
     const name =  req.body.userName
     const language =  req.body.language
     
-   
+  
     // req.flash('info', 'Flash Message Added');
 if(!name && !language){
 req.flash('errMsg','please enter your name and select a language')
@@ -41,7 +41,11 @@ else if(!language){
 else if(!name){
   req.flash('errMsg','please enter your name')
 }
+else if(isNaN(name) === false ){
+    req.flash('errMsg','name should not be a number')
+}
 else {
+    console.log(isNaN(name));
   await greetings.setGreetNames(name);
   var languages = await greetings.languages(language, name)
   var greetNameCounter = await greetings.greetNameCounter();
