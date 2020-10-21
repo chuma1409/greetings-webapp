@@ -38,9 +38,9 @@ async function setGreetNames(name){
 
 
 	 function errorHandler(lang, name){
-		 if(name !== '' & isNaN(name)){
-			 return "name should not be a number"
-		 }
+		//  if(name !== '' & isNaN(name)){
+		// 	 return "name should not be a number"
+		//  }
 		if(!lang && !name){
 			
 			return "please enter your name and select a language";
